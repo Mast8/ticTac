@@ -13,7 +13,7 @@ const WINNING_COMBINATIONS = [
 const cellElements = document.querySelectorAll('[data-cell]')
 const board = document.getElementById('board')
 const winningMessageElement = document.getElementById('winningMessage')
-const restartButton = document.getElementById('restartButton')
+//const restartButton = document.getElementById('restartButton')
 const winningMessageTextElement = document.querySelector('[data-winning-message-text]')
 const countWinners = document.getElementById('counter')
 
@@ -22,7 +22,10 @@ let circleTurn
 
 startGame()
 
-restartButton.addEventListener('click', startGame)
+
+
+//restartButton.addEventListener('click', startGame)
+
 
 function startGame() {
   circleTurn = false
@@ -39,7 +42,8 @@ function startGame() {
 function handleClick(e) {
   const cell = e.target
   const currentClass = circleTurn ? CIRCLE_CLASS : X_CLASS
-  let xwins 
+  
+
   placeMark(cell, currentClass)
   if (checkWin(currentClass)) {
     endGame(false)
@@ -52,12 +56,14 @@ function handleClick(e) {
 }
 
 function endGame(draw) {
+  let xwins;
   if (draw) {
-    winningMessageTextElement.innerText = 'Draw!'
+    winningMessageTextElement.innerText = 'Draw!';
   } else {
-    winningMessageTextElement.innerText = `${circleTurn ? "O's"  : "X's"} Wins!`
-    let games =  +1;
-    countWinners.innerText = `${games } !`
+    winningMessageTextElement.innerText = `${circleTurn ? "O's"  : "X's"} Wins!`;
+    xwins  =+1;
+    countWinners.textContent = xwins;
+    //countWinners.innerText = `${xwins } !`;
   }
   winningMessageElement.classList.add('show')
 }
