@@ -18,8 +18,9 @@ const winningMessageTextElement = document.querySelector('[data-winning-message-
 const countWinners = document.getElementById('counter')
 
 
-let circleTurn
-
+let circleTurn;
+xWon = 0;
+oWon = 0;
 startGame()
 
 
@@ -28,13 +29,15 @@ startGame()
 
 
 function startGame() {
-  circleTurn = false
+  
+  circleTurn = false;
   cellElements.forEach(cell => {
     cell.classList.remove(X_CLASS)
     cell.classList.remove(CIRCLE_CLASS)
     cell.removeEventListener('click', handleClick)
     cell.addEventListener('click', handleClick, { once: true })
   })
+  console.log(xWon + "  o: " + oWon)
   setBoardHoverClass()
   winningMessageElement.classList.remove('show')
 }
@@ -56,13 +59,14 @@ function handleClick(e) {
 }
 
 function endGame(draw) {
-  let xwins;
+ 
   if (draw) {
     winningMessageTextElement.innerText = 'Draw!';
   } else {
     winningMessageTextElement.innerText = `${circleTurn ? "O's"  : "X's"} Wins!`;
-    xwins  =+1;
-    countWinners.textContent = xwins;
+    xWon++;
+    console.log(xWon + "..  o: " + oWon)
+    //countWinners.textContent = xwins;
     //countWinners.innerText = `${xwins } !`;
   }
   winningMessageElement.classList.add('show')
@@ -95,7 +99,12 @@ function setBoardHoverClass() {
 function checkWin(currentClass) {
   return WINNING_COMBINATIONS.some(combination => {
     return combination.every(index => {
-      return cellElements[index].classList.contains(currentClass)
+      if(cellElements[index].classList.contains(currentClass)){
+        cellElements[index].style.backgroundColor = "#08D9D6";
+        //boxes[winConditions[i][j]].style.backgroundColor = "#08D9D6"
+        return true;
+      }
+      //return cellElements[index].classList.contains(currentClass)
     })
   })
 }
