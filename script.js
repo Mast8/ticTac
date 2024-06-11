@@ -16,6 +16,7 @@ const winningMessageElement = document.getElementById('winningMessage')
 //const restartButton = document.getElementById('restartButton')
 const winningMessageTextElement = document.querySelector('[data-winning-message-text]')
 const countWinners = document.getElementById('counter')
+let scoreElement = document.getElementById("score");
 
 
 let circleTurn;
@@ -37,9 +38,10 @@ function startGame() {
     cell.removeEventListener('click', handleClick)
     cell.addEventListener('click', handleClick, { once: true })
   })
-  console.log(xWon + "  o: " + oWon)
-  setBoardHoverClass()
-  winningMessageElement.classList.remove('show')
+  console.log(xWon + "  o: " + oWon);
+  setBoardHoverClass();
+  showScores();
+  winningMessageElement.classList.remove('show');
 }
 
 function handleClick(e) {
@@ -58,13 +60,28 @@ function handleClick(e) {
   }
 }
 
+function showScores() {
+  //let percentage = Math.round((score / questions.length) *100);
+  
+  let scoreHTML =
+      `
+  <div class="score">
+    <h2 id='score'> X score: ${xWon}</h2>
+    <h2 class=>  O score: ${oWon} </h2>
+  </div>
+  `;
+  scoreElement.innerHTML = scoreHTML;
+};
+
 function endGame(draw) {
  
   if (draw) {
     winningMessageTextElement.innerText = 'Draw!';
   } else {
     winningMessageTextElement.innerText = `${circleTurn ? "O's"  : "X's"} Wins!`;
-    xWon++;
+    if(circleTurn)
+      oWon++;
+    else xWon++;
     console.log(xWon + "..  o: " + oWon)
     //countWinners.textContent = xwins;
     //countWinners.innerText = `${xwins } !`;
@@ -100,7 +117,7 @@ function checkWin(currentClass) {
   return WINNING_COMBINATIONS.some(combination => {
     return combination.every(index => {
       if(cellElements[index].classList.contains(currentClass)){
-        cellElements[index].style.backgroundColor = "#08D9D6";
+       //cellElements[index].style.backgroundColor = "#08D9D6";
         //boxes[winConditions[i][j]].style.backgroundColor = "#08D9D6"
         return true;
       }
