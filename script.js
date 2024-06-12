@@ -28,6 +28,13 @@ startGame()
 
 //restartButton.addEventListener('click', startGame)
 
+function newGame (){
+ 
+  xWon = 0;
+  oWon = 0;
+  startGame();
+}
+
 
 function startGame() {
   

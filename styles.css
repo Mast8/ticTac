@@ -146,17 +146,24 @@ body {
 }
 
 .restart {
- 
+  
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
  
 }
 
 button {
+  font-size: large;
   padding: 10px;
   cursor: pointer;
   border-radius: 5px;
+}
+
+button:hover {
+  color: black;
+  background-color: rgba(74, 197, 115, 0.89);
 }
 
 .score {
