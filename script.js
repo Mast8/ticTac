@@ -20,8 +20,10 @@ let scoreElement = document.getElementById("score");
 
 
 let circleTurn;
-xWon = 0;
+/* xWon = 0;
 oWon = 0;
+draw= 0; */
+resetScores()
 startGame()
 
 
@@ -29,10 +31,14 @@ startGame()
 //restartButton.addEventListener('click', startGame)
 
 function newGame (){
- 
+  resetScores();
+  startGame();
+}
+
+function resetScores(){
   xWon = 0;
   oWon = 0;
-  startGame();
+  draw = 0;
 }
 
 
@@ -60,6 +66,7 @@ function handleClick(e) {
   if (checkWin(currentClass)) {
     endGame(false)
   } else if (isDraw()) {
+    draw++;
     endGame(true)
   } else {
     swapTurns()
@@ -75,6 +82,7 @@ function showScores() {
   <div class="score">
     <h2 id='score'> X score: ${xWon}</h2>
     <h2 class=>  O score: ${oWon} </h2>
+    <h2 class=>  Draw: ${draw} </h2>
   </div>
   `;
   scoreElement.innerHTML = scoreHTML;
@@ -83,13 +91,15 @@ function showScores() {
 function endGame(draw) {
  
   if (draw) {
+   
     winningMessageTextElement.innerText = 'Draw!';
+    
   } else {
     winningMessageTextElement.innerText = `${circleTurn ? "O's"  : "X's"} Wins!`;
     if(circleTurn)
       oWon++;
     else xWon++;
-    console.log(xWon + "..  o: " + oWon)
+    console.log(xWon + "..  o: " + oWon + " "+ draw)
     //countWinners.textContent = xwins;
     //countWinners.innerText = `${xwins } !`;
   }
