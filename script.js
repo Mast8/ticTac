@@ -78,12 +78,25 @@ function showScores() {
   //let percentage = Math.round((score / questions.length) *100);
   
   let scoreHTML =
-      `
-  <div class="score">
-    <h2 id='score'> X score: ${xWon}</h2>
-    <h2 class=>  O score: ${oWon} </h2>
-    <h2 class=>  Draw: ${draw} </h2>
-  </div>
+  `<h2 class=>  Draw: ${draw} </h2>
+  <table>
+  <tr>
+    <th>Player</th>
+    <th>Won</th>
+   
+  </tr>
+  <tr>
+    <td>X</td>
+    <td>${xWon}</td>
+    
+  </tr>
+  <tr>
+    <td>O</td>
+    <td>${oWon}</td>
+    
+  </tr>
+</table>
+  
   `;
   scoreElement.innerHTML = scoreHTML;
 };

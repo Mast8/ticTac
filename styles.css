@@ -13,7 +13,7 @@ body {
 
 .board {
   width: 100vw;
-  height: 70vh;
+  height: 60vh;
   display: grid;
   justify-content: center;
   align-content: center;
@@ -159,6 +159,7 @@ button {
   padding: 10px;
   cursor: pointer;
   border-radius: 5px;
+  margin: 10px 5px 10px 5px;
 }
 
 button:hover {
@@ -170,4 +171,6 @@ button:hover {
   display: flex;
   flex-direction: column;
   text-align: center;
+  align-content: center;
+  flex-wrap: wrap;
 }
