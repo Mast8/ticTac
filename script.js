@@ -64,13 +64,13 @@ function handleClick(e) {
 
   placeMark(cell, currentClass)
   if (checkWin(currentClass)) {
-    endGame(false)
+    endGame(false);
   } else if (isDraw()) {
     draw++;
-    endGame(true)
+    endGame(true);
   } else {
-    swapTurns()
-    setBoardHoverClass()
+    swapTurns();
+    setBoardHoverClass();
   }
 }
 
@@ -112,9 +112,6 @@ function endGame(draw) {
     if(circleTurn)
       oWon++;
     else xWon++;
-    console.log(xWon + "..  o: " + oWon + " "+ draw)
-    //countWinners.textContent = xwins;
-    //countWinners.innerText = `${xwins } !`;
   }
   winningMessageElement.classList.add('show')
 }

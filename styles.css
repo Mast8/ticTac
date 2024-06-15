@@ -59,11 +59,13 @@ body {
 }
 
 .cell.x::before,
-.cell.x::after,
-.cell.circle::before {
-  background-color: black;
+.cell.x::after{
+  background-color: rgb(32, 32, 114);
 }
 
+.cell.circle::before {
+  background-color: rgb(138, 41, 41);
+}
 .board.x .cell:not(.x):not(.circle):hover::before,
 .board.x .cell:not(.x):not(.circle):hover::after,
 .board.circle .cell:not(.x):not(.circle):hover::before {
@@ -87,6 +89,7 @@ body {
 
 .cell.x::after,
 .board.x .cell:not(.x):not(.circle):hover::after {
+  color:blue;
   transform: rotate(-45deg);
 }
 
